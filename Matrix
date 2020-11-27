@@ -1,0 +1,95 @@
+#include<stdio.h>
+int ra,ca,rb,cb,A[20][20],B[20][20];
+int i,j;
+void read(int[20][20],int,int);
+void display(int[20][20],int,int);
+void toTuple(int[20][20],int,int);
+void transpose(int[20][20],int,int);
+void sum(int[20][20],int[20][20],int,int,int,int);
+int main()
+{
+    printf("Enter the number of rows and columns of matrix A : ");
+    scanf("%d%d",&ra,&ca);
+    printf("Enter the number of rows and columns of matrix B : ");
+    scanf("%d%d",&rb,&cb);
+    printf("Enter elements of MATRIX A\n");
+    read(A,ra,ca);
+    printf("\n___MATRIX A___\n");
+    display(A,ra,ca);
+    printf("Enter elements of MATRIX B\n");
+    read(B,rb,cb);
+    printf("\n___MATRIX B___\n");
+    display(B,rb,cb);
+    printf("\n___TUPLE OF MATRIX A___\n");
+    toTuple(A,ra,ca);
+    printf("\n___TUPLE OF MATRIX B___\n");
+    toTuple(A,rb,cb);
+    printf("\n___TRANSPOSE OF MATRIX A___\n");
+    transpose(A,ra,ca);
+    printf("\n___TRANSPOSE OF MATRIX B___\n");
+    transpose(B,rb,cb);
+    printf("\n___SUM OF MATRIX A AND MATRIX B___\n");
+    sum(A,B,ra,ca,rb,cb);
+}
+void read(int M[20][20],int r,int c)
+{
+    printf("Enter the matrix elements : ");
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            scanf("%d",&M[i][j]);
+        }
+    }
+}
+void display(int M[20][20],int r,int c)
+{
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            printf("%d  ",M[i][j]);
+        }
+        printf("\n");
+    }
+}
+void toTuple(int M[20][20],int r,int c)
+{
+    printf("{");
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            printf(" (%d %d %d) ",i,j,M[i][j]);
+        }
+    }
+    printf("}");
+}
+void transpose(int M[20][20],int r,int c)
+{
+    int T[20][20];
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            T[i][j]=M[j][i];
+        }
+    }
+    display(T,r,c);
+}
+void sum(int M[20][20],int N[20][20],int m,int n,int p,int q)
+{
+    int s[20][20];
+    if((m==n)&&(p==q))
+    {
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            s[i][j]=M[i][j]+N[i][j];
+        }
+    }
+    display(s,m,n);
+    }
+}
+
