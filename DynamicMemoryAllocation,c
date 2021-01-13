@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int i,n;
+    int *ptr;
+    
+    printf("Enter the value of n : ");
+    scanf("%d",&n);
+    
+    ptr = (int*)malloc(n*sizeof(int));
+    //ptr=(int*)calloc(n,sizeof(int);
+    
+    if(ptr==NULL)
+    {
+        exit(0);
+    }
+    
+    else
+    {
+    printf("Enter the numbers : ");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",ptr+i);
+    }
+    ptr=(int*)realloc(ptr,(n+2)*sizeof(int));
+    if(ptr==NULL)
+    {
+        exit(0);
+    }
+    else
+    {
+    printf("Enter 2 more numbers : ");
+    for(i=n;i<n+2;i++)
+    {
+        scanf("%d",ptr+i);
+    }
+    }
+    printf("The numbers are : ");
+    for(i=0;i<n+2;i++)
+    {
+      printf("%d\t",*(ptr+i));  
+    }
+    }
+    free(ptr);
+}
